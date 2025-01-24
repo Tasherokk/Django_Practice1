@@ -7,7 +7,8 @@ from .models import Task, Priority, Category, Project, User
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = []
+    list_display = ('title', 'project', 'due_date')
+    search_fields = ('title',)
 
 
 @admin.register(Priority)
@@ -22,9 +23,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = []
+    list_display = ('name', 'start_date', 'end_date')
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = []
+    list_display = ('username', 'email', 'role', 'is_active')
+    list_filter = ('role', 'is_active')
